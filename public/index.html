@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Newsroom feed</title>
+    <!--CSS Libraries
+    ====================================================-->
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <!-- Path to Framework7 iOS related color styles -->
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <!-- Path to icon styles-->
+    <link rel="stylesheet" href="css/framework7-icons.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block">
+        <p>Left panel content goes here</p>
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+
+    <!-- Popups
+    ================================================================-->
+    <!-- Wellcome msg Popup -->
+    <div class="popup popup-about" id="wellcomeMsg">
+      <div class="content-block">
+        <h1>Wellcome Jose</h1>
+      </div>
+    </div>
+
+    <!-- Login Screen
+    ================================================================-->
+    <div class="login-screen modal-in">
+      <!-- Default view-page layout -->
+      <div class="view">
+        <div class="page">
+          <!-- page-content has additional login-screen content -->
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Newsroom feed</div>
+            <!-- Login form -->
+            <form>
+              <div class="list-block">
+                <ul>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Username</div>
+                      <div class="item-input">
+                        <input type="text" name="username" placeholder="Username">
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title label">Password</div>
+                      <div class="item-input">
+                        <input type="password" name="password" placeholder="Password">
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li><a href="#" class="item-link list-button" onclick='fakeLogin()'>Sign In</a></li>
+                </ul>
+                <div class="list-block-label">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <!-- <p><a href="#" class="close-login-screen">Close Login Screen</a></p> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+
+    <!-- ==========================================================================-->
+    <!-- Views, and they are tabs-->
+    <!-- We need to set "toolbar-through" class on it to keep space for our tab bar-->
+    <!-- ==========================================================================-->
+    <div class="views tabs-animated-wrap toolbar-through">
+
+      <div class="tabs">
+
+      <!-- View-1
+      ==========================================================-->
+      <!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
+      <div id="news" class="view view-main tab active">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center">Newsroom feed</div>
+            <!-- Sub navbar -->
+            <div class="subnavbar">
+                <!-- Sub navbar content, for example tabs buttons -->
+                <div class="buttons-row">
+                    <a href="#business" class="button tab-link active">business</a>
+                    <a href="#financial" class="button tab-link">financial</a>
+                    <a href="#sports" class="button tab-link">sports</a>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pages-->
+        <div class="pages navbar-through toolbar-fixed">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index-1" class="page with-subnavbar">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="tabs-swipeable-wrap">
+                <div class="tabs">
+                  <div id="business" class="tab active">
+                    <div class="content-block">
+                      <p>Business feed</p>
+                    </div>
+                  </div>
+                  <div id="financial" class="tab">
+                    <div class="content-block">
+                      <p>Financial feed</p>
+                    </div>
+                  </div>
+                  <div id="sports" class="tab">
+                    <div class="content-block">
+                      <p>Sports feed</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!--Index-1 end-->
+        </div><!--Pages end-->
+      </div>
+
+      <!-- View-2
+      ==========================================================-->
+      <!-- Second view (for second wrap)-->
+      <div id="editor" class="view tab">
+        <!-- We can make with view with navigation, let's add Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center sliding">News Editor</div>
+          </div>
+        </div>
+        <div class="pages navbar-through">
+          <div data-page="index-2" class="page">
+            <div class="page-content">
+              <div class="content-block-title">New Story</div>
+                  <form class="list-block" id="editorForm">
+                    <ul>
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">list</i></div>
+                          <div class="item-inner">
+                            <div class="item-input">
+                              <select placeholder="Category" name="category">
+                                <option disabled selected hidden>Category</option>
+                                <option>Business</option>
+                                <option>Financial</option>
+                                <option>Sports</option>
+                                <option>Politics</option>
+                                <option>Science</option>
+                                <option>Entertainment</option>
+                                <option>Education</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li><!--Categories-->
+                      <li>
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">person</i></div>
+                          <div class="item-inner">
+                            <div class="item-input">
+                                <input type="text" name="name" placeholder="Autor" id="author">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="align-top">
+                        <div class="item-content">
+                          <div class="item-media"><i class="icon f7-icons">compose</i></div>
+                          <div class="item-inner">
+                            <div class="item-input">
+                                <textarea placeholder="Story" name="text"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </form>
+                  <div class="content-block">
+                    <a href="#" class="button submit-data">Submit</a>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- View-3
+      ==========================================================-->
+      <div id="settings" class="view tab">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center sliding">Settings</div>
+          </div>
+        </div>
+        <div class="pages navbar-through">
+          <div data-page="index-3" class="page">
+            <div class="page-content">
+              <div class="content-block-title">Hello, Jose</div>
+              <div class="list-block">
+                  <ul>
+                    <li>
+                      <a href="#" class="item-link item-content" onclick="fakeLogout()">
+                        <div class="item-inner">
+                          <div class="item-title">Log out</div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div><!-- View-3 end -->
+      <!-- View-4
+      ==========================================================-->
+      <div id="view-4" class="view tab">
+        <div class="pages navbar-fixed">
+          <div data-page="index-4" class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Settings</div>
+              </div>
+            </div>
+            <div class="page-content">
+
+
+            </div>
+          </div>
+        </div>
+      </div><!-- View-4 end -->
+    </div><!--Tabs end-->
+
+      <!-- Bottom Tabbar
+      ==========================================================-->
+      <div class="toolbar tabbar">
+        <div class="toolbar-inner">
+          <a href="#news" class="tab-link active">
+            <i class="icon f7-icons">document_text</i>
+            <!-- <span class="tabbar-label">News</span> -->
+          </a>
+          <a href="#editor" class="tab-link">
+            <i class="icon f7-icons">compose</i>
+            <!-- <span class="tabbar-label">Editor</span> -->
+          </a>
+          <a href="#settings" class="tab-link">
+            <i class="icon f7-icons">gear</i>
+            <!-- <span class="tabbar-label">Profile</span> -->
+          </a>
+          <a href="#view-4" class="tab-link">
+            <i class="icon f7-icons">photos</i>
+            <!-- <span class="tabbar-label">Photos</span> -->
+          </a>
+        </div>
+      </div><!--Toolbar end-->
+
+    </div><!--Views end-->
+
+    <!--Javascript files
+    ================================================================-->
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>
