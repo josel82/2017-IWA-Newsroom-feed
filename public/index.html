@@ -102,47 +102,54 @@
       ==========================================================-->
       <!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
       <div id="news" class="view view-main tab active">
-        <!-- Top Navbar-->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="center">Newsroom feed</div>
-            <!-- Sub navbar -->
-            <div class="subnavbar">
-                <!-- Sub navbar content, for example tabs buttons -->
-                <div class="buttons-row">
-                    <a href="#business" class="button tab-link active">business</a>
-                    <a href="#financial" class="button tab-link">financial</a>
-                    <a href="#sports" class="button tab-link">sports</a>
-                </div>
-            </div>
-          </div>
-        </div>
+
         <!-- Pages-->
         <div class="pages navbar-through toolbar-fixed">
           <!-- Page, data-page contains page name-->
           <div data-page="index-1" class="page with-subnavbar">
+            <!-- Top Navbar-->
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Newsroom feed</div>
+                <div class="right">
+                  <a href="#" onclick="onRefreshPage()">
+                    <i class="icon f7-icons">reload</i>
+                  </a>
+                </div>
+                <!-- Sub navbar -->
+                <div class="subnavbar">
+                    <!-- Sub navbar content, for example tabs buttons -->
+                    <div class="buttons-row">
+                        <a href="#business" class="button tab-link active">business</a>
+                        <a href="#financial" class="button tab-link">financial</a>
+                        <a href="#sports" class="button tab-link">sports</a>
+                    </div>
+                </div>
+              </div>
+            </div>
             <!-- Scrollable page content-->
-            <div class="page-content">
               <div class="tabs-swipeable-wrap">
                 <div class="tabs">
-                  <div id="business" class="tab active">
-                    <div class="content-block">
-                      <p>Business feed</p>
+                    <div id="business" class="articles page-content tab active">
+                        <div class="content-block-title">Business news</div>
+                        <div class="list-block media-list">
+                          <ul id="business-articles"></ul>
+                        </div>
+                    </div>
+                  <div id="financial" class="articles page-content tab">
+                    <div class="content-block-title">Financial news</div>
+                    <div class="list-block media-list">
+                      <ul id="financial-articles"></ul>
                     </div>
                   </div>
-                  <div id="financial" class="tab">
-                    <div class="content-block">
-                      <p>Financial feed</p>
-                    </div>
-                  </div>
-                  <div id="sports" class="tab">
-                    <div class="content-block">
-                      <p>Sports feed</p>
+                  <div id="sports" class="articles page-content tab">
+                    <div class="content-block-title">Sports news</div>
+                    <div class="list-block media-list">
+                      <ul id="sport-articles"></ul>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
           </div><!--Index-1 end-->
         </div><!--Pages end-->
       </div>
@@ -263,19 +270,15 @@
         <div class="toolbar-inner">
           <a href="#news" class="tab-link active">
             <i class="icon f7-icons">document_text</i>
-            <!-- <span class="tabbar-label">News</span> -->
           </a>
           <a href="#editor" class="tab-link">
             <i class="icon f7-icons">compose</i>
-            <!-- <span class="tabbar-label">Editor</span> -->
           </a>
           <a href="#settings" class="tab-link">
             <i class="icon f7-icons">gear</i>
-            <!-- <span class="tabbar-label">Profile</span> -->
           </a>
           <a href="#view-4" class="tab-link">
             <i class="icon f7-icons">photos</i>
-            <!-- <span class="tabbar-label">Photos</span> -->
           </a>
         </div>
       </div><!--Toolbar end-->
@@ -286,7 +289,8 @@
     ================================================================-->
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
-    <!-- Path to your app js-->
+    <!-- ========================Custome Javascript====================-->
+    <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
   </body>
 </html>

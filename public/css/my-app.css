@@ -1,0 +1,35 @@
+/**************News List Styles****************/
+.list-block .item-content{
+  padding-left: 0;
+}
+
+.list-block.media-list .item-media,
+.list-block li.media-item .item-media{
+  padding: 0;
+}
+
+.list-block.media-list .item-inner, .list-block li.media-item .item-inner {
+  margin-left: 0;
+  padding-left: 15px;
+
+}
+.list-block.media-list .item-inner .item-subtitle {
+  font-size: .8em;
+}
+.list-block.media-list .item-inner .item-title-row .item-title {
+  height: 40px;
+  white-space: normal;
+  line-height: 1.2em;
+}
+ul.articles{
+  background-color: #efeff4;
+}
+.list-block .item-content {
+  margin-bottom: 5px;
+  background-color: white;
+}
+
+/****************Form****************/
+.list-block textarea {
+  height: 300px;
+}
