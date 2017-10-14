@@ -47,6 +47,39 @@ function requestFeed(feedURI, callback){
           });
 }
 
+function storeInDataBase(data){
+  return new Promise(function(resolve, reject){
+    let response = {status: 200, data: 'success'};
+    setTimeout(function(){
+      if(response.status === 200){
+        resolve(response);
+      }else{
+        reject(response)
+      }
+    },1000);
+
+  });
+}
+
+function onSubmit(){
+  let formData = myApp.formToData('#editorForm');
+  window.newStories.push(formData);
+  myApp.showIndicator();
+  storeInDataBase(formData)
+    .then(
+      function(res){
+        myApp.hideIndicator();
+        myApp.alert('New story has been submited!', function(){
+          $$('#editorForm')[0].reset();
+        });
+      },
+      function(err){
+        myApp.hideIndicator();
+        myApp.alert('Unable to submit story');
+        console.log(err);
+      });
+}
+
 function printError(selector){
   $$(selector).html(
     `<div class="content-block">

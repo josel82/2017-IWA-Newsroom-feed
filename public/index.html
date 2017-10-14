@@ -46,49 +46,7 @@
 
     <!-- Login Screen
     ================================================================-->
-    <div class="login-screen modal-in">
-      <!-- Default view-page layout -->
-      <div class="view">
-        <div class="page">
-          <!-- page-content has additional login-screen content -->
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">Newsroom feed</div>
-            <!-- Login form -->
-            <form>
-              <div class="list-block">
-                <ul>
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title label">Username</div>
-                      <div class="item-input">
-                        <input type="text" name="username" placeholder="Username">
-                      </div>
-                    </div>
-                  </li>
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title label">Password</div>
-                      <div class="item-input">
-                        <input type="password" name="password" placeholder="Password">
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="list-block">
-                <ul>
-                  <li><a href="#" class="item-link list-button" onclick='fakeLogin()'>Sign In</a></li>
-                </ul>
-                <div class="list-block-label">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <!-- <p><a href="#" class="close-login-screen">Close Login Screen</a></p> -->
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-  </div>
+    <div class="login-screen modal-in"></div>
 
     <!-- ==========================================================================-->
     <!-- Views, and they are tabs-->
@@ -102,7 +60,6 @@
       ==========================================================-->
       <!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
       <div id="news" class="view view-main tab active">
-
         <!-- Pages-->
         <div class="pages navbar-through toolbar-fixed">
           <!-- Page, data-page contains page name-->
@@ -152,116 +109,21 @@
               </div>
           </div><!--Index-1 end-->
         </div><!--Pages end-->
+
       </div>
 
-      <!-- View-2
+      <!-- Editor view
       ==========================================================-->
-      <!-- Second view (for second wrap)-->
-      <div id="editor" class="view tab">
-        <!-- We can make with view with navigation, let's add Top Navbar-->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="center sliding">News Editor</div>
-          </div>
-        </div>
-        <div class="pages navbar-through">
-          <div data-page="index-2" class="page">
-            <div class="page-content">
-              <div class="content-block-title">New Story</div>
-                  <form class="list-block" id="editorForm">
-                    <ul>
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">list</i></div>
-                          <div class="item-inner">
-                            <div class="item-input">
-                              <select placeholder="Category" name="category">
-                                <option disabled selected hidden>Category</option>
-                                <option>Business</option>
-                                <option>Financial</option>
-                                <option>Sports</option>
-                                <option>Politics</option>
-                                <option>Science</option>
-                                <option>Entertainment</option>
-                                <option>Education</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </li><!--Categories-->
-                      <li>
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">person</i></div>
-                          <div class="item-inner">
-                            <div class="item-input">
-                                <input type="text" name="name" placeholder="Autor" id="author">
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="align-top">
-                        <div class="item-content">
-                          <div class="item-media"><i class="icon f7-icons">compose</i></div>
-                          <div class="item-inner">
-                            <div class="item-input">
-                                <textarea placeholder="Story" name="text"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </form>
-                  <div class="content-block">
-                    <a href="#" class="button submit-data">Submit</a>
-                  </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- View-3
-      ==========================================================-->
-      <div id="settings" class="view tab">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="center sliding">Settings</div>
-          </div>
-        </div>
-        <div class="pages navbar-through">
-          <div data-page="index-3" class="page">
-            <div class="page-content">
-              <div class="content-block-title">Hello, Jose</div>
-              <div class="list-block">
-                  <ul>
-                    <li>
-                      <a href="#" class="item-link item-content" onclick="fakeLogout()">
-                        <div class="item-inner">
-                          <div class="item-title">Log out</div>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-       </div><!-- View-3 end -->
-      <!-- View-4
-      ==========================================================-->
-      <div id="view-4" class="view tab">
-        <div class="pages navbar-fixed">
-          <div data-page="index-4" class="page">
-            <div class="navbar">
-              <div class="navbar-inner">
-                <div class="center">Settings</div>
-              </div>
-            </div>
-            <div class="page-content">
+      <div id="editor" class="view tab"></div>
 
+      <!-- Settings view
+      ==========================================================-->
+      <div id="settings" class="view tab"></div>
 
-            </div>
-          </div>
-        </div>
-      </div><!-- View-4 end -->
+      <!-- View-4 view
+      ==========================================================-->
+      <div id="json-output" class="view tab"></div>
+
     </div><!--Tabs end-->
 
       <!-- Bottom Tabbar
@@ -275,10 +137,10 @@
             <i class="icon f7-icons">compose</i>
           </a>
           <a href="#settings" class="tab-link">
-            <i class="icon f7-icons">gear</i>
+            <i class="icon f7-icons">settings</i>
           </a>
-          <a href="#view-4" class="tab-link">
-            <i class="icon f7-icons">photos</i>
+          <a href="#json-output" class="tab-link">
+            <i class="icon f7-icons">data</i>
           </a>
         </div>
       </div><!--Toolbar end-->
@@ -292,5 +154,6 @@
     <!-- ========================Custome Javascript====================-->
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/view-loader.js"></script>
   </body>
 </html>

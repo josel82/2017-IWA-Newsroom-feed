@@ -29,7 +29,17 @@ ul.articles{
   background-color: white;
 }
 
-/****************Form****************/
+/****************Editor view****************/
 .list-block textarea {
   height: 300px;
+}
+
+/************Settings view***********/
+#settings .item-link .item-inner {
+  padding-left: 15px;
+}
+
+/************JSON Output view***********/
+pre#json-container{
+  overflow: overlay;
 }
