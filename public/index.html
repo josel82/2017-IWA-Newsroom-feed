@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="css/my-app.css">
   </head>
   <body>
+    <!-- facebook SDK -->
+    <div id="fb-root"></div>
+    <script src="js/facebook-sdk.js"></script>
+
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
     <!-- Panels overlay-->
@@ -38,11 +42,7 @@
     <!-- Popups
     ================================================================-->
     <!-- Wellcome msg Popup -->
-    <div class="popup popup-about" id="wellcomeMsg">
-      <div class="content-block">
-        <h1>Wellcome Jose</h1>
-      </div>
-    </div>
+
 
     <!-- Login Screen
     ================================================================-->
@@ -77,9 +77,9 @@
                 <div class="subnavbar">
                     <!-- Sub navbar content, for example tabs buttons -->
                     <div class="buttons-row">
-                        <a href="#business" class="button tab-link active">business</a>
-                        <a href="#financial" class="button tab-link">financial</a>
-                        <a href="#sports" class="button tab-link">sports</a>
+                        <a href="#business" class="button tab-link active">Business</a>
+                        <a href="#financial" class="button tab-link">Financial</a>
+                        <a href="#sports" class="button tab-link">Sports</a>
                     </div>
                 </div>
               </div>
@@ -153,7 +153,7 @@
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- ========================Custome Javascript====================-->
     <script type="text/javascript" src="js/functions.js"></script>
-    <script type="text/javascript" src="js/my-app.js"></script>
     <script type="text/javascript" src="js/view-loader.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
   </body>
 </html>

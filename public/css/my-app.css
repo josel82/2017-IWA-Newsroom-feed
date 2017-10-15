@@ -1,32 +1,38 @@
 /**************News List Styles****************/
-.list-block .item-content{
+#news .list-block .item-content{
   padding-left: 0;
 }
 
-.list-block.media-list .item-media,
-.list-block li.media-item .item-media{
+#news .list-block.media-list .item-media,
+#news .list-block li.media-item .item-media{
   padding: 0;
 }
 
-.list-block.media-list .item-inner, .list-block li.media-item .item-inner {
+#news .list-block.media-list .item-inner,
+#news .list-block li.media-item .item-inner {
   margin-left: 0;
   padding-left: 15px;
 
 }
-.list-block.media-list .item-inner .item-subtitle {
+#news .list-block.media-list .item-inner .item-subtitle {
   font-size: .8em;
 }
-.list-block.media-list .item-inner .item-title-row .item-title {
+#news .list-block.media-list .item-inner .item-title-row .item-title {
   height: 40px;
   white-space: normal;
   line-height: 1.2em;
 }
-ul.articles{
+#news ul.articles{
   background-color: #efeff4;
 }
-.list-block .item-content {
+#news .list-block .item-content {
   margin-bottom: 5px;
   background-color: white;
+}
+#art-img{
+  min-width: 150px;
+  max-width: 150px;
+  height: auto;
 }
 
 /****************Editor view****************/
@@ -34,12 +40,13 @@ ul.articles{
   height: 300px;
 }
 
-/************Settings view***********/
-#settings .item-link .item-inner {
-  padding-left: 15px;
-}
 
 /************JSON Output view***********/
 pre#json-container{
   overflow: overlay;
+}
+
+/************Login screen***********/
+#facebook-btn{
+  text-align: center;
 }

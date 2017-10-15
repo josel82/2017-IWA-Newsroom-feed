@@ -2,12 +2,10 @@
 //***************** App Initialization ********************
 //*********************************************************
 'use strict';
-var loggedIn = true;
+var loggedIn = false;
 // Initialize app
 var myApp = new Framework7();
 
-// Export selectors engine
-var $$ = Dom7;
 
 // Add views
 var view1 = myApp.addView('#news', {
@@ -34,37 +32,14 @@ const businessFeedURI = 'https://newsapi.org/v1/articles?source=business-insider
 const sportsFeedURI = 'https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=326561aa48064fd6b3ef0dc19a133043';
 const financialFeedURI = 'https://newsapi.org/v1/articles?source=the-economist&sortBy=top&apiKey=326561aa48064fd6b3ef0dc19a133043';
 
-//This function will run when the app starts
-(function(){
-  checkLoginStatus();
-  if (businessNews === undefined) {
-    requestFeed(businessFeedURI, function(data){
-      window.businessNews = data;
-      renderArticles('business-articles', data);
-    });
-  }
-  if (financialNews === undefined) {
-    requestFeed(financialFeedURI, function(data){
-      window.financialNews = data;
-      renderArticles('financial-articles', data);
-    });
-  }
-  if (sportNews === undefined) {
-    requestFeed(sportsFeedURI, function(data){
-      window.sportNews = data;
-      renderArticles('sport-articles', data);
-    });
-  }
-})();
 
-//EventListeners
-// $$('#financial').on('tab:show', function(){
-//
-// });
-//
-// $$('#sports').on('tab:show', function(){
-//
-// });
+checkLoginStatus();
+
+
+$$('#editor').on('tab:show', function () {
+    $$('#author')[0].value = username;
+});
+
 $$('#json-output').on('tab:show', function(){
   let objOutput = {
     businessNews,

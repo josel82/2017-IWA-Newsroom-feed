@@ -4,8 +4,9 @@
     <!-- page-content has additional login-screen content -->
     <div class="page-content login-screen-content">
       <div class="login-screen-title">Newsroom feed</div>
+
       <!-- Login form -->
-      <form>
+      <!-- <form id="loginForm">
         <div class="list-block">
           <ul>
             <li class="item-content">
@@ -31,11 +32,14 @@
             <li><a href="#" class="item-link list-button" onclick='fakeLogin()'>Sign In</a></li>
           </ul>
           <div class="list-block-label">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <!-- <p><a href="#" class="close-login-screen">Close Login Screen</a></p> -->
+            <p>or</p>
           </div>
         </div>
-      </form>
+      </form> -->
+      <div class="content-block" id="facebook-btn">
+        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+      </div>
     </div>
   </div>
 </div>
