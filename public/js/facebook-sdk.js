@@ -9,6 +9,7 @@ window.fbAsyncInit = function() {
     });
 
     FB.getLoginStatus(function(response) {
+      console.log(response);
       statusChangeCallback(response);
     });
 

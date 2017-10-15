@@ -3,42 +3,17 @@
   <div class="page">
     <!-- page-content has additional login-screen content -->
     <div class="page-content login-screen-content">
-      <div class="login-screen-title">Newsroom feed</div>
-
-      <!-- Login form -->
-      <!-- <form id="loginForm">
-        <div class="list-block">
-          <ul>
-            <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">Username</div>
-                <div class="item-input">
-                  <input type="text" name="username" placeholder="Username">
-                </div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-inner">
-                <div class="item-title label">Password</div>
-                <div class="item-input">
-                  <input type="password" name="password" placeholder="Password">
-                </div>
-              </div>
-            </li>
-          </ul>
+      <div class="login-screen-title">
+        <div class="content-block">
+          <img src="img/logo.png" alt="Newsroom feed" id="logo-xl">
         </div>
-        <div class="list-block">
-          <ul>
-            <li><a href="#" class="item-link list-button" onclick='fakeLogin()'>Sign In</a></li>
-          </ul>
-          <div class="list-block-label">
-            <p>or</p>
-          </div>
-        </div>
-      </form> -->
+      </div>
       <div class="content-block" id="facebook-btn">
         <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
         </fb:login-button>
+      </div>
+      <div class="content-block" id="login-footer">
+        <p>2017 &copy; Jose Padilla</p>
       </div>
     </div>
   </div>

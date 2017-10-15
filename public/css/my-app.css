@@ -47,6 +47,19 @@ pre#json-container{
 }
 
 /************Login screen***********/
+.login-screen-content{
+  padding-top: 50px;
+}
 #facebook-btn{
+  text-align: center;
+}
+#logo-xl{
+  max-width: 300px;
+  height: auto;
+}
+#login-footer{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
   text-align: center;
 }
