@@ -21,6 +21,7 @@ var view4 = myApp.addView('#json-output');
 //****************** App Functionality ********************
 //*********************************************************
 
+
 //News storage
 var businessNews;
 var financialNews;

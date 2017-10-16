@@ -48,9 +48,12 @@ pre#json-container{
 
 /************Login screen***********/
 .login-screen-content{
-  padding-top: 50px;
+  padding-top: 100px;
 }
 #facebook-btn{
+  position: absolute;
+  width: 100%;
+  bottom: 100px;
   text-align: center;
 }
 #logo-xl{
@@ -62,4 +65,13 @@ pre#json-container{
   width: 100%;
   bottom: 0;
   text-align: center;
+}
+/************Wellcome screen***********/
+
+#wellcome-msg {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  margin-top: -20%;
 }

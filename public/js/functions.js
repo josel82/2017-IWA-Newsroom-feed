@@ -31,15 +31,16 @@ function checkLoginStatus(){
 
 function wellcomeUser(){
     let popupHTML = `
-      <div class="popup popup-about" id="wellcomeMsg">
-        <div class="content-block">
-          <h1>Wellcome ${username}</h1>
+      <div class="popup popup-about" id="wellcome-popup">
+        <div class="content-block" id="wellcome-msg">
+          <h1>Welcome</h1>
+          <h1>${username}</h1>
         </div>
       </div>
     `;
     myApp.popup(popupHTML);
     setTimeout(function(){
-      myApp.closeModal('#wellcomeMsg');
+      myApp.closeModal('#wellcome-popup');
     },1500);
 }
 
@@ -152,10 +153,10 @@ function storeInDataBase(data){
 //**************************view3 (#settings)**************************
 
 function onLogout(){
-  myApp.showIndicator();
+  myApp.showPreloader('Loggin out');
   FB.logout(function(response) {
     loggedIn = false;
-    myApp.hideIndicator();
+    myApp.hidePreloader();
     checkLoginStatus();
     $$('.login-screen').on('loginscreen:close',function(){
       myApp.showTab('#news', false);
