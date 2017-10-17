@@ -22,98 +22,93 @@ function fakeLogout(){
 function checkLoginStatus(){
   if(loggedIn){
     myApp.closeModal('.login-screen');
-    wellcomeUser();
+    welcomeUser();
     getAllNews();
   }else{
     myApp.loginScreen('.login-screen');
   }
 }
 
-function wellcomeUser(){
-    let popupHTML = `
-      <div class="popup popup-about" id="wellcome-popup">
-        <div class="content-block" id="wellcome-msg">
-          <h1>Welcome</h1>
-          <h1>${username}</h1>
-        </div>
-      </div>
-    `;
-    myApp.popup(popupHTML);
+function welcomeUser(){
+    myApp.popup(welcomeMsgTemplate(username));
     setTimeout(function(){
       myApp.closeModal('#wellcome-popup');
     },1500);
 }
 
 
-function printError(selector){
-  $$(selector).html(
-    `<div class="content-block">
-       <p>Unable to show news...</p>
-     </div>`
-    );
+function printError(selector, error){
+  $$(selector).html(errorMsgTemplate(error));
 }
 
 //**************************view1 (#news)***************************
-
-function renderArticles(selector, articles){
-  console.log(`rendering ${selector}`);
-  $$(`#${selector}`).html('');
-  $$.each(articles, function(i){
-    let date = new Date(articles[i].publishedAt);
-    $$(`#${selector}`).append(`<li>
-        <div class="item-content">
-            <div class="item-media">
-                <img id="art-img" src="${articles[i].urlToImage}">
-            </div>
-            <div class="item-inner">
-                <div class="item-title-row">
-                    <div class="item-title">${articles[i].title}</div>
-                    <div class="item-after"></div>
-                </div>
-                <div class="item-subtitle">
-                  ${date.toLocaleTimeString('en-GB', {formatMatcher: 'best fit',
-                                                      weekday: 'short',
-                                                      hour: '2-digit',
-                                                      minute: '2-digit'})}
-                </div>
-            </div>
-        </div>
-    </li>`)
-  });
-}
 
 function onRefreshPage(){
   getAllNews();
 }
 
-function requestFeed(feedURI, callback){
-  $$.getJSON(feedURI,
-          function(data){
-            callback(data.articles);
-          },
-          function(error){
-            console.log('Unable to get news', error);
-            printError('.articles');
-          });
+function requestFeed(feedURI){
+  return new Promise(function(resolve, reject){
+    $$.getJSON(feedURI,
+            function(data){
+              resolve(data);
+            },
+            function(err){
+              reject(err);
+            });
+  });
 }
 
 function getAllNews(){
+  requestFeed(businessFeedURI).then(
+    function(data){
+      window.businessNews = {'business': data};
+      myApp.template7Data.business = data;
+      routeToBusiness();
+    },
+    function(err){
+      console.log('Unable to get news', err);
+    }
+  );
 
-  requestFeed(businessFeedURI, function(data){
-        window.businessNews = data;
-        renderArticles('business-articles', data);
-  });
+  requestFeed(financialFeedURI).then(
+    function(data){
+      window.financialNews = {'financial': data};
+      myApp.template7Data.financial = data;
+    },
+    function(err){
+      console.log('Unable to get news', err);
+    }
+  );
 
-  requestFeed(financialFeedURI, function(data){
-        window.financialNews = data;
-        renderArticles('financial-articles', data);
-  });
+  requestFeed(sportsFeedURI).then(
+    function(data){
+      window.sportNews = {'sports': data};
+      myApp.template7Data.sports = data;
+    },
+    function(err){
+      console.log('Unable to get news', err);
+    }
+  );
+}
 
-  requestFeed(sportsFeedURI, function(data){
-        window.sportNews = data;
-        renderArticles('sport-articles', data);
-  });
-
+function routeToBusiness(){
+  view1.router.load({
+      url: 'templates/business.template.html',
+      context: myApp.template7Data.business
+    });
+}
+function routeToFinancial(){
+  view1.router.load({
+      url: 'templates/financial.template.html',
+      context: myApp.template7Data.financial
+    });
+}
+function routeToSports(){
+  view1.router.load({
+      url: 'templates/sports.template.html',
+      context: myApp.template7Data.sports
+    });
 }
 
 //**************************view2 (#editor)***************************

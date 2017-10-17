@@ -55,57 +55,31 @@
       ==========================================================-->
       <!-- Your first view, it is also a .tab and should have "active" class to make it visible by default-->
       <div id="news" class="view view-main tab active">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center">Newsroom feed</div>
+            <div class="right">
+              <a href="#" onclick="onRefreshPage()">
+                <i class="icon f7-icons">reload</i>
+              </a>
+            </div>
+            <div class="subnavbar">
+                <!-- Sub navbar content, for example tabs buttons -->
+                <div class="buttons-row">
+                    <a href="#" class="button" onclick="routeToBusiness()">Business</a>
+                    <a href="#" class="button" onclick="routeToFinancial()">Financial</a>
+                    <a href="#" class="button" onclick="routeToSports()">Sports</a>
+                </div>
+            </div><!--Subnavbar end-->
+          </div>
+        </div>
         <!-- Pages-->
         <div class="pages navbar-through toolbar-fixed">
-          <!-- Page, data-page contains page name-->
           <div data-page="index-1" class="page with-subnavbar">
-            <!-- Top Navbar-->
-            <div class="navbar">
-              <div class="navbar-inner">
-                <div class="center">Newsroom feed</div>
-                <div class="right">
-                  <a href="#" onclick="onRefreshPage()">
-                    <i class="icon f7-icons">reload</i>
-                  </a>
-                </div>
-                <!-- Sub navbar -->
-                <div class="subnavbar">
-                    <!-- Sub navbar content, for example tabs buttons -->
-                    <div class="buttons-row">
-                        <a href="#business" class="button tab-link active">Business</a>
-                        <a href="#financial" class="button tab-link">Financial</a>
-                        <a href="#sports" class="button tab-link">Sports</a>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <!-- Scrollable page content-->
-              <div class="tabs-swipeable-wrap">
-                <div class="tabs">
-                    <div id="business" class="articles page-content tab active">
-                        <div class="content-block-title">Business news</div>
-                        <div class="list-block media-list">
-                          <ul id="business-articles"></ul>
-                        </div>
-                    </div>
-                  <div id="financial" class="articles page-content tab">
-                    <div class="content-block-title">Financial news</div>
-                    <div class="list-block media-list">
-                      <ul id="financial-articles"></ul>
-                    </div>
-                  </div>
-                  <div id="sports" class="articles page-content tab">
-                    <div class="content-block-title">Sports news</div>
-                    <div class="list-block media-list">
-                      <ul id="sport-articles"></ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
           </div><!--Index-1 end-->
         </div><!--Pages end-->
-
-      </div>
+      </div><!--News end-->
 
       <!-- Editor view
       ==========================================================-->
@@ -147,6 +121,7 @@
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <!-- ========================Custome Javascript====================-->
+    <script type="text/javascript" src="js/templates.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/view-loader.js"></script>
     <script type="text/javascript" src="js/my-app.js"></script>
