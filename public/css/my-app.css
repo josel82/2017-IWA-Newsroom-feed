@@ -22,16 +22,17 @@
   white-space: normal;
   line-height: 1.2em;
 }
-#news ul.articles{
+#news .list-block ul{
   background-color: #efeff4;
 }
-#news .list-block .item-content {
+#news .list-block li{
   margin-bottom: 5px;
+}
+#news .list-block .item-content {
   background-color: white;
 }
 #art-img{
-  min-width: 150px;
-  max-width: 150px;
+  max-height: 80px;
   height: auto;
 }
 #newsItemPage .page-content{
@@ -55,11 +56,20 @@
   height: 200px;
 }
 
-
 .list-block.media-list .item-inner{
   height: 80px;
 }
 
+.list-block.media-list .item-inner{
+  background-color: white;
+  padding-left: 15px;
+}
+ul#top10-articles .item-content{
+  padding: 0 0 5px 0;
+}
+#top10-articles {
+  background-color: #efeff4;
+}
 /************JSON Output view***********/
 pre#json-container{
   overflow: overlay;
