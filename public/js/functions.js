@@ -62,7 +62,6 @@ function requestFeed(feedURI){
 function getAllNews(){
   requestFeed(businessFeedURI).then(
     function(data){
-      window.businessNews = {'business': data};
       myApp.template7Data.business = data;
       routeToBusiness();
     },
@@ -73,7 +72,6 @@ function getAllNews(){
 
   requestFeed(financialFeedURI).then(
     function(data){
-      window.financialNews = {'financial': data};
       myApp.template7Data.financial = data;
     },
     function(err){
@@ -83,11 +81,27 @@ function getAllNews(){
 
   requestFeed(sportsFeedURI).then(
     function(data){
-      window.sportNews = {'sports': data};
       myApp.template7Data.sports = data;
     },
     function(err){
       console.log('Unable to get news', err);
+    }
+  );
+
+  $$.get(top10FeedURI, {type: 'top10stories'}, function(data){
+      let top10 = JSON.parse(data).news;
+      myApp.template7Data.top10 = top10;
+    },
+    function(error){
+      console.log('Unable to get top 10 stories', error);
+    }
+  );
+  $$.get(top10FeedURI, {type: 'currentauthors'}, function(data){
+      let authors = JSON.parse(data).authors;
+      myApp.template7Data.currentAuthors = authors;
+    },
+    function(error){
+      console.log('Unable to get authors', error);
     }
   );
 }
@@ -110,38 +124,55 @@ function routeToSports(){
       context: myApp.template7Data.sports
     });
 }
+function routeToEditor(){
+  view2.router.load({
+      url: 'templates/editor.template.html',
+      context: myApp.template7Data.editor
+    });
+}
+
+function routeToTop10(){
+  view2.router.load({
+      url: 'templates/top10.template.html',
+      context: myApp.template7Data.top10
+    });
+}
+
 
 //**************************view2 (#editor)***************************
 
 function onSubmit(){
   let formData = myApp.formToData('#editorForm');
-  window.newStories.push(formData);
-  myApp.showIndicator();
-  storeInDataBase(formData)
-    .then(
-      function(res){
-        myApp.hideIndicator();
-        myApp.alert('New story has been submited!', function(){
-          $$('#editorForm')[0].reset();
-        });
-      },
-      function(err){
-        myApp.hideIndicator();
-        myApp.alert('Unable to submit story');
-        console.log(err);
-      });
+  let url = `${top10FeedURI}?type=newstory&data=${formData.text}&id=${formData.userID}`;
+  console.log(url);
+  let encUrl = encodeURI(url);
+  console.log(encUrl);
+  // window.newStories.push(formData);
+  if(formData.category === "Category"){
+    myApp.alert('Please select a category.');
+  }else if(formData.text === ""){
+    myApp.alert('Please write a story.');
+  }else{
+    myApp.showIndicator();
+    $$.get(encUrl, function(res){
+              console.log(res);
+              myApp.hideIndicator();
+              myApp.alert('New story has been submited!', function(){
+                $$('#editorForm')[0].reset();
+              });
+            },
+            function(err){
+              myApp.hideIndicator();
+              myApp.alert('Unable to submit story');
+              console.log(err);
+            }
+    );
+  }
 }
 
 function storeInDataBase(data){
   return new Promise(function(resolve, reject){
-    let response = {status: 200, data: 'success'};
-    setTimeout(function(){
-      if(response.status === 200){
-        resolve(response);
-      }else{
-        reject(response)
-      }
-    },1000);
+
   });
 }
 

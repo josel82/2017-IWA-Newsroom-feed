@@ -1,10 +1,25 @@
+<!-- Top Navbar-->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="center sliding">News Editor</div>
-  </div>
-</div>
-<div class="pages navbar-through">
-  <div data-page="index-2" class="page">
+    <div class="center">Top 10 Stories</div>
+    <div class="right">
+      <a href="#" onclick="onRefreshPage()">
+        <i class="icon f7-icons">reload</i>
+      </a>
+    </div>
+    <!-- Sub navbar -->
+    <div class="subnavbar">
+        <!-- Sub navbar content, for example tabs buttons -->
+        <div class="buttons-row">
+            <a href="#" class="button active">Editor</a>
+            <a href="#" class="button" onclick="routeToTop10()">Top 10 Stories</a>
+        </div>
+    </div><!--Subnavbar end-->
+  </div><!--Navbar-inner end-->
+</div><!--Navbar end-->
+
+<div class="pages">
+  <div class="page with-subnavbar" data-page="editor">
     <div class="page-content">
       <div class="content-block-title">New Story</div>
           <form class="list-block" id="editorForm">
@@ -14,7 +29,8 @@
                   <div class="item-media"><i class="icon f7-icons">person</i></div>
                   <div class="item-inner">
                     <div class="item-input">
-                        <input type="text" name="author" placeholder="Autor" disabled id="author">
+                        <input type="text" name="author" placeholder="Autor" disabled id="author" value=" {{username}} ">
+                        <input type="hidden" name="userID" value="{{userID}}">
                     </div>
                   </div>
                 </div>

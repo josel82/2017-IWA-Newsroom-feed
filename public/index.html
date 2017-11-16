@@ -6,6 +6,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <title>Newsroom feed</title>
+    <link rel="icon"
+      type="image/x-icon"
+      href="/favicon.ico">
     <!--CSS Libraries
     ====================================================-->
     <!-- Path to Framework7 Library CSS-->
@@ -58,7 +61,7 @@
         <!-- Top Navbar-->
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center">Newsroom feed</div>
+            <div class="center">News Feeds</div>
             <div class="right">
               <a href="#" onclick="onRefreshPage()">
                 <i class="icon f7-icons">reload</i>
@@ -83,7 +86,25 @@
 
       <!-- Editor view
       ==========================================================-->
-      <div id="editor" class="view tab"></div>
+      <div id="editor" class="view tab">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center sliding">News Editor</div>
+          </div>
+          <!-- Sub navbar -->
+          <div class="subnavbar">
+              <!-- Sub navbar content, for example tabs buttons -->
+              <div class="buttons-row">
+                  <a href="#" class="button active">Editor</a>
+                  <a href="#" class="button" onclick="routeToTop10()">Top 10 Stories</a>
+              </div>
+          </div><!--Subnavbar end-->
+        </div>
+        <div class="pages navbar-through toolbar-fixed">
+          <div data-page="index-2" class="page with-subnavbar">
+          </div>
+        </div>
+      </div>
 
       <!-- Settings view
       ==========================================================-->

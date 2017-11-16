@@ -1,7 +1,7 @@
 <!-- Top Navbar-->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="center">News Feeds</div>
+    <div class="center">Top 10 Stories</div>
     <div class="right">
       <a href="#" onclick="onRefreshPage()">
         <i class="icon f7-icons">reload</i>
@@ -11,38 +11,29 @@
     <div class="subnavbar">
         <!-- Sub navbar content, for example tabs buttons -->
         <div class="buttons-row">
-            <a href="#" class="button" onclick="routeToBusiness()">Business</a>
-            <a href="#" class="button active">Financial</a>
-            <a href="#" class="button" onclick="routeToSports()">Sports</a>
+            <a href="#" class="button" onclick="routeToEditor()">Editor</a>
+            <a href="#" class="button active">Top 10 Stories</a>
         </div>
     </div><!--Subnavbar end-->
   </div><!--Navbar-inner end-->
 </div><!--Navbar end-->
 <!--Pages-->
 <div class="pages">
-  <div class="page with-subnavbar" data-page="financial">
+  <div class="page with-subnavbar" data-page="top10">
     <div class="page-content">
-      <div class="content-block-title">Source: {{source}}</div>
+      <div class="content-block-title">Source: News Database</div>
       <div class="list-block media-list">
-        <ul id="financial-articles">
-          {{#each articles}}
+        <ul id="top10-articles">
+          {{#each story}}
           <li>
-              <a href="templates/newsItem.template.html"
-                 class="item-link item-content"
-                 data-context-name="financial.articles.{{@index}}">
                 <div class="item-content">
-                    <div class="item-media">
-                        <img id="art-img" src="{{urlToImage}}">
-                    </div>
                     <div class="item-inner">
                         <div class="item-title-row">
-                            <div class="item-title">{{title}}</div>
+                            <div class="item-title">{{this}}</div>
                             <div class="item-after"></div>
                         </div>
-                        <div class="item-subtitle">{{date publishedAt}}</div>
                     </div>
                 </div>
-              </a>
           </li>
           {{/each}}
         </ul>

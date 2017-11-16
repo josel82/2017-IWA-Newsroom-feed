@@ -8,11 +8,12 @@
 <div class="pages">
   <div class="page" data-page="newsItem" id="newsItemPage">
     <div class="page-content">
-      <div class="content-block">
+      <div class="content-block" id="img-container">
         <img id="newsItemImg" src="{{urlToImage}}">
       </div>
       <div class="content-block">
         <h3>{{title}}</h3>
+        <span>{{date publishedAt}} | by {{author}}</span>
         <p>{{description}}</p>
       </div>
     </div>

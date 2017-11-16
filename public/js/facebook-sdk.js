@@ -1,6 +1,7 @@
 var username;
 var userID;
 
+
 window.fbAsyncInit = function() {
     FB.init({
       appId      : '136186643689266',

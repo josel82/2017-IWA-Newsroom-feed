@@ -34,17 +34,31 @@
   max-width: 150px;
   height: auto;
 }
-
-#newsItemImg{
+#newsItemPage .page-content{
+  background-color: #fff;
+}
+#newsItemPage .content-block{
+  color: #000;
+}
+#newsItemPage div#img-container{
+  margin-top: 0;
+  padding: 0;
+}
+#newsItemPage div#img-container img#newsItemImg{
   width: 100%;
   height: auto;;
 }
 
+
 /****************Editor view****************/
 .list-block textarea {
-  height: 300px;
+  height: 200px;
 }
 
+
+.list-block.media-list .item-inner{
+  height: 80px;
+}
 
 /************JSON Output view***********/
 pre#json-container{
@@ -52,9 +66,7 @@ pre#json-container{
 }
 
 /************Login screen***********/
-.login-screen-content{
-  padding-top: 100px;
-}
+
 #facebook-btn{
   position: absolute;
   width: 100%;

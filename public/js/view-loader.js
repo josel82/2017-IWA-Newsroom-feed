@@ -5,9 +5,9 @@ $$.get('../templates/login-screen.template.html', function(data){
   $$('.login-screen').html(data);
 });
 
-$$.get('../templates/editor.template.html', function(data){
-  $$('#editor').html(data);
-});
+// $$.get('../templates/editor.template.html', function(data){
+//   $$('#editor').html(data);
+// });
 
 $$.get('../templates/settings.template.html', function(data){
   $$('#settings').html(data);
