@@ -32,7 +32,7 @@
                data-context-name="sports.articles.{{@index}}">
                 <div class="item-content">
                     <div class="item-media">
-                        <img id="art-img" src="{{urlToImage}}">
+                        <img id="art-img" src="{{urlToImage}}" onError="this.onerror=null;this.src='./img/logo.png';">
                     </div>
                     <div class="item-inner">
                         <div class="item-title-row">

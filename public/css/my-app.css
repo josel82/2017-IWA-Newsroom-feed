@@ -33,7 +33,7 @@
 }
 #art-img{
   max-height: 80px;
-  height: auto;
+  width: auto;
 }
 #newsItemPage .page-content{
   background-color: #fff;

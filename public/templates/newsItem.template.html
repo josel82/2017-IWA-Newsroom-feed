@@ -9,7 +9,7 @@
   <div class="page" data-page="newsItem" id="newsItemPage">
     <div class="page-content">
       <div class="content-block" id="img-container">
-        <img id="newsItemImg" src="{{urlToImage}}">
+        <img id="newsItemImg" src="{{urlToImage}}" onError="this.onerror=null;this.src='./img/logo.png';">
       </div>
       <div class="content-block">
         <h3>{{title}}</h3>

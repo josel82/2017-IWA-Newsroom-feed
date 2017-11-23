@@ -15,6 +15,7 @@ var myApp = new Framework7({
       'sports':{},
       'top10':{},
       'currentAuthors':{},
+      'yourStories':{},
       'editor':{}
     }
 });
@@ -48,11 +49,11 @@ Template7.registerHelper('date', function(timestamp){
 //News storage
 var newStories = [];
 
-//News Feed API URLs
-const businessFeedURI = 'https://newsapi.org/v1/articles?source=business-insider&sortBy=top&apiKey=326561aa48064fd6b3ef0dc19a133043';
-const sportsFeedURI = 'https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=326561aa48064fd6b3ef0dc19a133043';
-const financialFeedURI = 'https://newsapi.org/v1/articles?source=the-economist&sortBy=top&apiKey=326561aa48064fd6b3ef0dc19a133043';
-const top10FeedURI = 'http://52.48.79.163/db.php';
+const apiKey = '326561aa48064fd6b3ef0dc19a133043';
+
+//News Feed API URL
+const apiFeedURI = 'https://newsapi.org/v1/articles';
+const databaseURI = 'http://52.48.79.163/db.php';
 
 checkLoginStatus();
 
@@ -72,8 +73,9 @@ $$('#json-output').on('tab:show', function(){
     sportNews: myApp.template7Data.sports.articles,
     top10Stories: {
         stories: myApp.template7Data.top10.story,
-        currentAuthors: myApp.template7Data.currentAuthors.author
-    }
+        currentAuthors: myApp.template7Data.currentAuthors.author,
+    },
+    yourStories: myApp.template7Data.yourStories
   };
   $$('#json-container').html(JSON.stringify(objOutput, undefined, 2));
 });

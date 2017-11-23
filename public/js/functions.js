@@ -47,9 +47,9 @@ function onRefreshPage(){
   getAllNews();
 }
 
-function requestFeed(feedURI){
+function requestFeed(feedURI, data){
   return new Promise(function(resolve, reject){
-    $$.getJSON(feedURI,
+    $$.getJSON(feedURI, data,
             function(data){
               resolve(data);
             },
@@ -60,7 +60,12 @@ function requestFeed(feedURI){
 }
 
 function getAllNews(){
-  requestFeed(businessFeedURI).then(
+  requestFeed(apiFeedURI,
+    {
+      source: 'business-insider',
+      sortBy: 'top',
+      apiKey: apiKey
+    }).then(
     function(data){
       myApp.template7Data.business = data;
       routeToBusiness();
@@ -70,7 +75,12 @@ function getAllNews(){
     }
   );
 
-  requestFeed(financialFeedURI).then(
+  requestFeed(apiFeedURI,
+    {
+      source: 'the-economist',
+      sortBy: 'top',
+      apiKey: apiKey
+    }).then(
     function(data){
       myApp.template7Data.financial = data;
     },
@@ -79,7 +89,12 @@ function getAllNews(){
     }
   );
 
-  requestFeed(sportsFeedURI).then(
+  requestFeed(apiFeedURI,
+    {
+      source: 'bbc-sport',
+      sortBy: 'top',
+      apiKey: apiKey
+    }).then(
     function(data){
       myApp.template7Data.sports = data;
     },
@@ -88,22 +103,37 @@ function getAllNews(){
     }
   );
 
-  $$.get(top10FeedURI, {type: 'top10stories'}, function(data){
-      let top10 = JSON.parse(data).news;
-      myApp.template7Data.top10 = top10;
-    },
-    function(error){
-      console.log('Unable to get top 10 stories', error);
-    }
+  requestFeed(databaseURI, {type: 'top10stories'})
+    .then(
+        function(data){
+          myApp.template7Data.top10 = data.news;
+        },
+        function(err){
+          console.log('Unable to get top 10 stories', err);
+        }
   );
-  $$.get(top10FeedURI, {type: 'currentauthors'}, function(data){
-      let authors = JSON.parse(data).authors;
-      myApp.template7Data.currentAuthors = authors;
-    },
-    function(error){
-      console.log('Unable to get authors', error);
-    }
+  requestFeed(databaseURI, {type: 'currentauthors'})
+    .then(
+        function(data){
+          myApp.template7Data.currentAuthors = data.authors;
+        },
+        function(err){
+          console.log('Unable to get authors', err);
+        }
   );
+
+  $$.get(databaseURI, {type: 'getmystories', id: userID},
+      function(response){
+        data = response.trim().split('<br>').filter(function(item){
+            return item !== "";
+        })
+        myApp.template7Data.yourStories = data;
+      },
+      function(err){
+        myApp.template7Data.yourStories = err;
+        console.log('Unable to get your stories', err);
+      });
+
 }
 
 function routeToBusiness(){
@@ -144,10 +174,7 @@ function routeToTop10(){
 function onSubmit(){
   let formData = myApp.formToData('#editorForm');
   let url = `${top10FeedURI}?type=newstory&data=${formData.text}&id=${formData.userID}`;
-  console.log(url);
   let encUrl = encodeURI(url);
-  console.log(encUrl);
-  // window.newStories.push(formData);
   if(formData.category === "Category"){
     myApp.alert('Please select a category.');
   }else if(formData.text === ""){
