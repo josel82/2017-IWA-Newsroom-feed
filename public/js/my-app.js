@@ -67,15 +67,17 @@ $$('#editor').on('tab:show', function () {
 });
 
 $$('#json-output').on('tab:show', function(){
-  let objOutput = {
-    businessNews: myApp.template7Data.business.articles,
-    financialNews: myApp.template7Data.financial.articles,
-    sportNews: myApp.template7Data.sports.articles,
-    top10Stories: {
-        stories: myApp.template7Data.top10.story,
-        currentAuthors: myApp.template7Data.currentAuthors.author,
-    },
-    yourStories: myApp.template7Data.yourStories
-  };
-  $$('#json-container').html(JSON.stringify(objOutput, undefined, 2));
+
+    let objOutput = {
+      businessNews: myApp.template7Data.business.articles,
+      financialNews: myApp.template7Data.financial.articles,
+      sportNews: myApp.template7Data.sports.articles,
+      top10Stories: {
+          stories: myApp.template7Data.top10.story,
+          currentAuthors: myApp.template7Data.currentAuthors.author,
+      },
+      yourStories: myApp.template7Data.yourStories
+    };
+    $$('#json-container').html(JSON.stringify(objOutput, undefined, 2));
+
 });

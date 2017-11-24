@@ -102,6 +102,11 @@ function getAllNews(){
       console.log('Unable to get news', err);
     }
   );
+  getLocalStories();
+  getMyStories();
+}
+
+function getLocalStories(){
 
   requestFeed(databaseURI, {type: 'top10stories'})
     .then(
@@ -112,6 +117,7 @@ function getAllNews(){
           console.log('Unable to get top 10 stories', err);
         }
   );
+
   requestFeed(databaseURI, {type: 'currentauthors'})
     .then(
         function(data){
@@ -122,18 +128,21 @@ function getAllNews(){
         }
   );
 
+}
+
+function getMyStories(){
   $$.get(databaseURI, {type: 'getmystories', id: userID},
       function(response){
         data = response.trim().split('<br>').filter(function(item){
             return item !== "";
         })
         myApp.template7Data.yourStories = data;
+
       },
       function(err){
         myApp.template7Data.yourStories = err;
         console.log('Unable to get your stories', err);
       });
-
 }
 
 function routeToBusiness(){
@@ -173,7 +182,7 @@ function routeToTop10(){
 
 function onSubmit(){
   let formData = myApp.formToData('#editorForm');
-  let url = `${top10FeedURI}?type=newstory&data=${formData.text}&id=${formData.userID}`;
+  let url = `${databaseURI}?type=newstory&data=${formData.text}&id=${formData.userID}`;
   let encUrl = encodeURI(url);
   if(formData.category === "Category"){
     myApp.alert('Please select a category.');
@@ -187,6 +196,7 @@ function onSubmit(){
               myApp.alert('New story has been submited!', function(){
                 $$('#editorForm')[0].reset();
               });
+              getMyStories();
             },
             function(err){
               myApp.hideIndicator();

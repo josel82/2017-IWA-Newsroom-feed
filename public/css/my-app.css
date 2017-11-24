@@ -1,15 +1,20 @@
 /**************News List Styles****************/
-#news .list-block .item-content{
+#news .list-block .item-content,
+#newsItemPage .list-block .item-content{
   padding-left: 0;
 }
 
 #news .list-block.media-list .item-media,
-#news .list-block li.media-item .item-media{
+#news .list-block li.media-item .item-media,
+#newsItemPage .list-block.media-list .item-media,
+#newsItemPage .list-block li.media-item .item-media{
   padding: 0;
 }
 
 #news .list-block.media-list .item-inner,
-#news .list-block li.media-item .item-inner {
+#news .list-block li.media-item .item-inner,
+#newsItemPage .list-block.media-list .item-inner,
+#newsItemPage .list-block li.media-item .item-inner{
   margin-left: 0;
   padding-left: 15px;
 
@@ -64,12 +69,12 @@
   background-color: white;
   padding-left: 15px;
 }
-ul#top10-articles .item-content{
+/*ul#top10-articles .item-content{
   padding: 0 0 5px 0;
 }
 #top10-articles {
   background-color: #efeff4;
-}
+}*/
 /************JSON Output view***********/
 pre#json-container{
   overflow: overlay;
