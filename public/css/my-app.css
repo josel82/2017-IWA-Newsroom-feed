@@ -73,6 +73,9 @@
 .list-block .item-title {
   white-space: normal;
 }
+.list-block .item-media img{
+  width: 30px;
+}
 ul#top10-articles{
   background-color: #efeff4;
 }
@@ -89,6 +92,12 @@ pre#json-container{
 }
 
 /************Login screen***********/
+.login-screen .login-screen-content{
+  background: url("../img/newyork.jpeg");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center;
+}
 
 #facebook-btn{
   position: absolute;
@@ -105,7 +114,9 @@ pre#json-container{
   width: 100%;
   bottom: 0;
   text-align: center;
+  color: #fff;
 }
+
 /************Wellcome screen***********/
 
 #wellcome-msg {
@@ -114,4 +125,31 @@ pre#json-container{
   position: absolute;
   top: 50%;
   margin-top: -20%;
+}
+#wellcome-popup{
+  background-color: #EFEFF4;
+  color:#FFFFFF;
+}
+
+/************Media Queries***********/
+
+@media screen and (orientation: landscape) {
+
+  .login-screen .login-screen-content{
+    background: url("../img/newyork.jpeg");
+    background-size: 100% auto;
+  }
+  #logo-xl{
+    max-width: 200px;
+    height: auto;
+  }
+  #facebook-btn{
+    position: static;
+    margin: auto;
+    text-align: center;
+  }
+  #login-footer{
+    position: static;
+    margin: auto;
+  }
 }

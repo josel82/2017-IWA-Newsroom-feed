@@ -61,7 +61,8 @@ checkLoginStatus();
 $$('#editor').on('tab:show', function () {
     myApp.template7Data.editor = {
       username : username,
-      userID : userID
+      userID : userID,
+      userPic : userPic
     };
     routeToEditor();
 });

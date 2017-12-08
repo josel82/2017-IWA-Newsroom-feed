@@ -1,5 +1,6 @@
-var username;
-var userID;
+let username;
+let userID;
+let userPic;
 
 
 window.fbAsyncInit = function() {
@@ -27,9 +28,11 @@ window.fbAsyncInit = function() {
  function statusChangeCallback(res){
    if(res.status === 'connected'){
      window.loggedIn = true;
-     FB.api('/me', function(response) {
-       window.username = response.name;
-       window.userID = response.id;
+     FB.api('/me?fields=id,name,picture', function(response) {
+       console.log(response.name);
+       username = response.name;
+       userID = response.id;
+       userPic = response.picture.data.url;
        checkLoginStatus();
      });
    } else {
